@@ -4,7 +4,7 @@ default_objects=("Bandages" "Champagne" "Rope" "Festive sweater" "Mantle" "Soap"
 
 default_objects_index=0
 
-echo "Current list of objects: ${defualt_objects[@]}"
+echo "Current list of objects: ${default_objects[@]}"
 
 echo "Choose an option"
 
