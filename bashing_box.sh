@@ -8,14 +8,14 @@ show_entire_list() {
 	read -p "Do you want to select first choice and show the entire list (y/n)" show_list
 	if [[ "$show_list" = "Y" || "y" ]]; then
 		show 0
-
+	fi
 }
 
 print_certain_item() {
 	read -p "Do you eant to print an item in x position in list (y/n)" item_position
 	if [[ "$item_position" = "Y" || "y" ]]; then
 		print 0
-
+	fi
 }
 
 echo "Current list of objects: ${default_objects[@]}"
