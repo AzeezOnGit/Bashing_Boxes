@@ -1,21 +1,48 @@
 #!/bin/bash
-
+#Array of 10 objects
 default_objects=("Bandages" "Champagne" "Rope" "Festive sweater" "Mantle" "Soap" "SLeigh" "Snowman" "Bonfire" "Moccasin")
 
 default_objects_index=0
-
+#SHow entire list of objects function
 show_entire_list() {
-	read -p "Do you want to select first choice and show the entire list (y/n)" show_list
-	if [[ "$show_list" = "Y" || "y" ]]; then
-		show 0
+	echo "This is the full list"
+	for item in "${defualt_objects[@]}"; do
+		echo "$item"
+}
+#Print item at X position in array function
+print_certain_item() {
+	read -p "Enter position of item (0-${default_objects[@]}" pos
+	if [[ $pos -ge 0 & $pos -lt ${default_objects[@]} ]]; then
+		echo "Item at $pos: ${default_objects[@]}"
+	else
+		echo "Invalid position"
 	fi
 }
-
-print_certain_item() {
-	read -p "Do you eant to print an item in x position in list (y/n)" item_position
-	if [[ "$item_position" = "Y" || "y" ]]; then
-		print 0
+#Add item to array function
+add_item() {
+	read -p "Enter new item" new_item
+	default_objects=+($new_item)
+	echo "$new_item added to list"
+}
+#Remove last item in array function
+remove_last_item() {
+	unset ${default_objects[@] (-1)
+	echo "Last item from list was removed"
+}
+# Remove item at X position function
+remove_certain_item() {
+	read -p "Enter psoition to remove (0-${default_object[@]}" position
+	if [[ $pos -ge 0 & $pos -lt $default_objects[@]} ]]
+		unset ${default_objects[pos]}
+		default_objects=(${default_objects[@]})
+	else
+		echo "Invalid position"
 	fi
+}
+# Exit function
+exit_game() {
+	echo "Goodbye, and thanks for playing!"
+	exit 0
 }
 
 echo "Current list of objects: ${default_objects[@]}"
@@ -38,28 +65,16 @@ read -p "What would you like to do?" choice
 
 case $choice 
 	
-	1)
-
-	echo "List ${default_objects[@]}"
-	;;
-
-	2)
-
-	read -p "Enter an item in X position" positon 0
+	1) show_entire_list ;;
 	
-	echo "You have picked an item from ${default_objects[@]} "
-	;;
+	2) print_certain_item ;;
 
-	3) 
+	3) add-item ;;
 
-	read -p "Enter a new item" new_item
+	4) remove_last_item ;;
 
-	echo "You have added a new item to ${default_objects[@](+1)}"
-	;;
+	5) remove_certain_item ;;
 
-	4)
+	6) exit_game ;;
 
-	read -p "Remove last item from list" last_time
-
-	echo "You have removed last item from list ${default_objects[@](-1)"
-	;;
+esac
