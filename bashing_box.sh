@@ -8,6 +8,7 @@ show_entire_list() {
 	echo "This is the full list"
 	for item in "${defualt_objects[@]}"; do
 		echo "$item"
+	done
 }
 #Print item at X position in array function
 print_certain_item() {
