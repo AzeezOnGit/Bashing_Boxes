@@ -26,13 +26,14 @@ add_item() {
 }
 #Remove last item in array function
 remove_last_item() {
-	unset ${default_objects[@] (-1)
+	unset ${default_objects}[-1]
 	echo "Last item from list was removed"
 }
 # Remove item at X position function
 remove_certain_item() {
-	read -p "Enter psoition to remove (0-${default_object[@]}" position
-	if [[ $pos -ge 0 & $pos -lt $default_objects[@]} ]]
+
+	read -p "Enter psoition to remove (0-${default_object[@]}" pos
+	if [[ $pos -ge 0 & $pos -lt ${default_objects[@]} ]]
 		unset ${default_objects[pos]}
 		default_objects=(${default_objects[@]})
 	else
@@ -61,7 +62,7 @@ echo "5. Remove item from X position"
 
 echo "6. Exit"
 
-read -p "What would you like to do?" choice
+read -p "What would you like to do? " choice
 
 case $choice 
 	
