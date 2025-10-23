@@ -37,7 +37,7 @@ remove_certain_item() {
 	if [[ $pos -ge 0 && $pos -lt ${default_objects[@]} ]]
 		unset ${default_objects[pos]}
 		default_objects=(${default_objects[@]})
-	
+		echo "Item at $pos has been removed"
 	else
 		echo "Invalid position"
 	fi
