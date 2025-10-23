@@ -33,7 +33,12 @@ remove_last_item() {
 # Remove item at X position function
 remove_certain_item() {
 
-	
+	read -p "Enter psoition to remove (0-${default_object[@]}" pos
+	if [[ $pos -ge 0 && $pos -lt ${default_objects[@]} ]]
+		unset ${default_objects[pos]}
+		default_objects=(${default_objects[@]})
+		echo "Item at $pos has been removed"
+	else
 		echo "Invalid position"
 	fi
 }
