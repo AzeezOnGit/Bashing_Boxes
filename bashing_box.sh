@@ -66,7 +66,7 @@ echo "6. Exit"
 
 read -p "What would you like to do? [1-6] " choice
 
-case $choice 
+case $choice in
 	
 	1) show_entire_list 
 		;;
