@@ -34,7 +34,7 @@ remove_last_item() {
 remove_certain_item() {
 
 	read -p "Enter psoition to remove (0-${default_object[@]}" pos
-	if [[ $pos -ge 0 && $pos -lt ${default_objects[@]} ]]
+	if [[ $pos -ge 0 && $pos -lt ${default_objects[@]} ]]; then
 		unset ${default_objects[pos]}
 		default_objects=(${default_objects[@]})
 		echo "Item at $pos has been removed"
@@ -64,20 +64,20 @@ echo "5. Remove item from X position"
 
 echo "6. Exit"
 
-read -p "What would you like to do? " choice
+read -p "What would you like to do? [1-6] " choice
 
 case $choice 
 	
-	1) show_entire_list ;;
-	
-	2) print_certain_item ;;
-
-	3) add-item ;;
-
-	4) remove_last_item ;;
-
-	5) remove_certain_item ;;
-
-	6) exit_game ;;
-
+	1) show_entire_list 
+		;;
+	2) print_certain_item 
+		;;
+	3) add-item 
+		;;
+	4) remove_last_item 
+		;;
+	5) remove_certain_item 
+		;;
+	6) exit_game 
+		;;
 esac
