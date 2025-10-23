@@ -13,7 +13,7 @@ show_entire_list() {
 #Print item at X position in array function
 print_certain_item() {
 	read -p "Enter position of item (0-${default_objects[@]}" pos
-	if [[ $pos -ge 0 & $pos -lt ${default_objects[@]} ]]; then
+	if [[ $pos -ge 0 && $pos -lt ${default_objects[@]} ]]; then
 		echo "Item at $pos: ${default_objects[@]}"
 	else
 		echo "Invalid position"
@@ -22,7 +22,7 @@ print_certain_item() {
 #Add item to array function
 add_item() {
 	read -p "Enter new item" new_item
-	default_objects=+($new_item)
+	default_objects+=($new_item)
 	echo "$new_item added to list"
 }
 #Remove last item in array function
@@ -34,7 +34,7 @@ remove_last_item() {
 remove_certain_item() {
 
 	read -p "Enter psoition to remove (0-${default_object[@]}" pos
-	if [[ $pos -ge 0 & $pos -lt ${default_objects[@]} ]]
+	if [[ $pos -ge 0 && $pos -lt ${default_objects[@]} ]]
 		unset ${default_objects[pos]}
 		default_objects=(${default_objects[@]})
 	else
