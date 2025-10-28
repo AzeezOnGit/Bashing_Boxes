@@ -12,7 +12,7 @@ show_entire_list() {
 }
 #Print item at X position in array function
 print_certain_item() {
-	read -p "Enter position of item (0-${default_objects[@]}" pos
+	read -p "Enter position of item ${default_objects[@]}" pos
 	if [[ $pos -ge 0 && $pos -lt ${default_objects[@]} ]]; then
 		echo "Item at $pos: ${default_objects[@]}"
 	else
@@ -62,9 +62,17 @@ echo "4. Remove last item from list"
 
 echo "5. Remove item from X position"
 
-echo "6. Exit"
+echo "6. Save your current box to a file"
 
-read -p "What would you like to do? [1-6] " choice
+echo "7. Load a previously saved box"
+
+echo "8. List exisiting saved boxes"
+
+echo "9. Delete a saved box"
+
+echo "10. Exit"
+
+read -p "What would you like to do? [1-10] " choice
 
 case $choice in
 	
@@ -78,6 +86,8 @@ case $choice in
 		;;
 	5) remove_certain_item 
 		;;
+
 	6) exit_game 
 		;;
 esac
+
