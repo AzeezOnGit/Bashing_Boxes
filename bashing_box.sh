@@ -3,7 +3,7 @@
 default_objects=("Bandages" "Champagne" "Rope" "Festive sweater" "Mantle" "Soap" "SLeigh" "Snowman" "Bonfire" "Moccasin")
 
 default_objects_index=0
-
+#Shows the entire list of objects in array
 show_entire_list() {
 	echo "This is the full list"
 	for item in "${defualt_objects[@]}"; do
@@ -12,9 +12,9 @@ show_entire_list() {
 }
 #Print item at X position in array function
 print_certain_item() {
-	read -p "Enter position of item ${default_objects[@]}" pos
-	if [[ $pos -ge 0 && $pos -lt ${default_objects[@]} ]]; then
-		echo "Item at $pos: ${default_objects[@]}"
+	read -p "Enter position of item ${#default_objects[@]}" pos
+	if [[ $pos -ge 0 && $pos -lt ${#default_objects[@]} ]]; then
+		echo "Item at $pos: ${#default_objects[@]}"
 	else
 		echo "Invalid position"
 	fi
@@ -33,8 +33,8 @@ remove_last_item() {
 # Remove item at X position function
 remove_certain_item() {
 
-	read -p "Enter psoition to remove (${default_object[@]}" pos
-	if [[ $pos -ge 0 && $pos -lt ${default_objects[@]} ]]; then
+	read -p "Enter psoition to remove (${#default_object[@]}" pos
+	if [[ $pos -ge 0 && $pos -lt ${#default_objects[@]} ]]; then
 		unset ${default_objects[pos]}
 		default_objects=(${default_objects[@]})
 		echo "Item at $pos has been removed"
@@ -48,7 +48,7 @@ save_box() {
 	echo "${default_objects[@]}" > "data/$name.txt"
 	echo "Box saved as $name.txt in data/ folder"
 }
-
+#Loads a box by taking the filename.txt and pushing it to array
 load_box () {
 	read -p "ENter name of box you want to load" name 
 	if [[ "data/$name.txt" ]]; then
@@ -58,8 +58,8 @@ load_box () {
 		echo "The name of file doesn't exist in folder"
 	fi
 }
-
-list_existing_boxes
+#Lists the existing boxes in /data directory
+list_existing_boxes() {
 	list_files=/home/azeezvbox/Bashing_Boxes/data
 	echo ""
 	echo "The existing boxes have been saved"
@@ -67,7 +67,7 @@ list_existing_boxes
 	echo ""
 	ls $list_files
 }
-
+#Deletes a saved box in the /data directory
 delete_saved_box() {
 	list_files=/home/azeezvbox/Bashing_Boxes/data
 	ls $list_files
@@ -83,7 +83,7 @@ exit_game() {
 	read -p "Would yu like to save before exiting (yes/no):" answer
 	if [[ $answer == "y" ]]; then
 		save_box 
-		echo "You haved saved your box, thanks for playing!"
+		echo "You have          saved your box, thanks for playing!"
 		exit 0
 	else
 		echo "Aww man, it is okay that you don't want to save it, thanks for playing anyways"
